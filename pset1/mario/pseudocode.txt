@@ -1,0 +1,27 @@
+Create stairs in Mario style.
+
+       #
+      ##
+     ###
+    ####
+   #####
+  ######
+ #######
+########
+
+That would be some stairs at height 8, the highest they will go.
+
+So I require a user to input a value of 1 to 8.
+
+int x;
+
+Use a do while loop to make sure x is <1 but >8.
+
+Once the height is chosen time to create the stairs.
+
+e.g. height of 1
+
+if (x = 1)
+    {
+    printf("#");
+    }

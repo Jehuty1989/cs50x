@@ -1,0 +1,13 @@
+sort1 uses: Bubble Sort
+
+How do you know?: The more sorted the list of numbers is the faster this sorting algorithm runs. I can safely assume this algorithm is Bubble Sort because of that fact.
+
+sort2 uses: Merge Sort
+
+How do you know?: Merge Sort is the fastest sorting algorithm to use that I know of and after running some tests this was the fastest of the three. It is safe to assume
+that this algorithm is Merge Sort.
+
+sort3 uses: Selection Sort
+
+How do you know?: Regardless of how sorted the lists are this algorithm runs for approximately the same length of time. This is because Selection Sort has a best case
+run time and worst case run time of n. So it doesn't matter if the numbers are random, reversed or sorted, this algorithm will take the same time to run.

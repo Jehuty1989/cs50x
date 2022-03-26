@@ -1,0 +1,132 @@
+// Recursive function to count how many pairs
+int pair_how_many(int n);
+
+int pairs_total = pair_how_many(candidate_count - 1);
+    
+    int voters_total = 0;
+    for (int a = 0; a < 999; a++)
+    {
+        for (int b = 0; b < candidate_count; b++)
+        {
+            if (preferences[a][b] == 1)
+                voters_total = voters_total + 1;
+        }
+        
+        if (preferences[a][0] == 0 && preferences[a][1] == 0)
+            break;
+    }
+    
+    pairs_total = pairs_total * voters_total;
+
+// A recursive function to calculate how many pairs
+int pair_how_many(int n)
+{
+    if (n == 1)
+        return 1;
+    else
+        return n + pair_how_many(n - 1);
+}
+
+
+void record_preferences(int ranks[])
+{
+    int a = 0;
+    for (int b = 0; b < candidate_count; b++)
+    {
+        for (int c = b; c < candidate_count; c++)
+        {
+            if (preferences[a][c] > 0)
+            {
+                a = a + 1;
+                c = -1;
+            }
+        }
+
+        preferences[a][b] = ranks[b];
+    }
+    
+    
+void add_pairs(void)
+{
+    for (int c = 0; c < 999; c++)
+    {
+        if (preferences[c][0] == 0 && preferences[c][1] == 0)
+            break;
+        
+        for (int a = 0; a < candidate_count; a++)
+        {
+            for (int b = a + 1; b < candidate_count; b++)
+            {
+                pairs[pair_count].winner = preferences[c][a];
+                pairs[pair_count].loser = preferences[c][b];
+                pair_count = pair_count + 1;
+            }
+        }
+    }
+    
+int find_origin(int winner);
+
+int find_origin(int winner)
+{
+    for (int a = winner, b = 0; b < candidate_count; b++)
+    {
+        if (locked[b][a])
+        {
+            return find_origin(b);
+        }
+    }
+    return winner;
+}
+
+void print_winner(voi)
+{
+    int candidate_true_value[candidate_count];
+    int lowest_true = candidate_count;
+    int current_true = 0;
+
+    for (int a = 0; a < candidate_count; a++)
+    {
+        for (int b = 0; b < candidate_count; b++)
+        {
+            if (locked[a][b])
+            {
+                current_true = current_true + 1;
+            }
+        }
+
+        candidate_true_value[a] = current_true;
+
+        if (lowest_true > current_true && current_true != 0)
+        {
+            lowest_true = current_true;
+        }
+
+        current_true = 0;
+    }
+
+    int how_many_with_lowest = 0;
+
+    for (int a = 0; a < candidate_count; a++)
+    {
+        if (candidate_true_value[a] == lowest_true)
+        {
+            how_many_with_lowest = how_many_with_lowest + 1;
+        }
+    }
+
+    if (how_many_with_lowest > 1)
+    {
+        int a = 0;
+        
+        printf("%s\n", candidates[find_origin(pairs[a].winner)]);
+        return;
+    }
+
+    for (int a = 0; a < candidate_count; a++)
+    {
+        if (candidate_true_value[a] == lowest_true)
+        {
+            printf("%s\n", candidates[a]);
+        }
+    }
+}
